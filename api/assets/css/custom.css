@@ -1,0 +1,29 @@
+.invalid-feedback {
+  display: block !important;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #ff2625; 
+}
+
+.my_input{
+    height: auto !important;
+    padding: 2px !important;
+    text-align: right;
+}
+
+.my_input_left{
+    height: auto !important;
+    padding: 2px !important;
+}
+
+.no_select{
+   -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select:none;
+}
+
+.my_row_hover:hover{
+    background-color: #F4F4F4  !important;
+}
