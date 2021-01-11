@@ -28,13 +28,10 @@
           <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="far fa-bell"></i>
-              <span class="badge badge-warning navbar-badge">15</span>
+              <span class="badge badge-warning navbar-badge">{{
+                num_tareas
+              }}</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-item dropdown-header"
-                >15 Notificaciones</span
-              >
-            </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link user-panel" data-toggle="dropdown" href="#">
@@ -97,7 +94,7 @@
         </div>
         <section class="content">
           <div class="container-fluid">
-            <RouterView :usuario="usuario" />
+            <RouterView :usuario="usuario" @get_num_tareas="get_num_tareas" />
           </div>
         </section>
       </div>
@@ -115,6 +112,7 @@ export default {
         nombres: null,
         apellidos: null,
       },
+      num_tareas: null,
     };
   },
   created: function () {
@@ -150,6 +148,7 @@ export default {
             var session = JSON.parse(localStorage.getItem("session"));
             vm.usuario.nombres = session.usuario.nombres;
             vm.usuario.apellidos = session.usuario.apellidos;
+            vm.get_tareas();
             return false;
           }
           localStorage.removeItem("session");
@@ -157,6 +156,36 @@ export default {
         })
         .catch((error) => console.log(error))
         .finally();
+    },
+    get_tareas: function () {
+      var session = localStorage.getItem("session");
+      if (session == null) {
+        this.$router.push("/auth");
+      }
+      session = JSON.parse(session);
+      var token_session = session.token;
+      const headers = {
+        "Content-Type": "application/json",
+        "x-api-key": this.$api_key,
+        token: token_session,
+      };
+      let config = {
+        headers: headers,
+      };
+      axios
+        .get(this.$base_url + "tareas/get", config, {
+          headers: headers,
+        })
+        .then((response) => {
+          if (response.data.status) {
+            this.num_tareas = response.data.results;
+          }
+        })
+        .catch()
+        .finally();
+    },
+    get_num_tareas: function (num_tareas) {
+      this.num_tareas = num_tareas;
     },
   },
 };

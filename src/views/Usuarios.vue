@@ -73,7 +73,7 @@ export default {
         headers: headers,
       };
       axios
-        .get(this.$base_url + "usuarios/get/", config, {
+        .get(this.$base_url + "usuarios/get", config, {
           headers: headers,
         })
         .then((response) => {
