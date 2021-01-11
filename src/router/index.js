@@ -8,7 +8,19 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/inicio',
+        name: 'Inicio',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Inicio.vue')
+      },
+      {
+        path: '/usuarios',
+        name: 'Usuarios',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Usuarios.vue')
+      }
+    ]
   },
   {
     path: '/auth',
@@ -19,7 +31,8 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: () => import(/* webpackChunkName: "about" */ '../views/Signup.vue')
-  }
+  },
+
 ]
 
 const router = new VueRouter({

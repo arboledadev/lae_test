@@ -87,7 +87,7 @@ export default {
       if (session == null) {
         return false;
       }
-      this.$router.push("/");
+      this.$router.push("/inicio");
     },
     set_auth: function () {
       this.invalid.email = false;

@@ -70,19 +70,19 @@
               data-accordion="false"
             >
               <li class="nav-item">
-                <a href="#/" class="nav-link">
+                <a href="#/inicio" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>Inicio</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#/usuarios" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
                   <p>Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#/tareas" class="nav-link">
                   <i class="nav-icon fas fa-tasks"></i>
                   <p>Tareas</p>
                 </a>
@@ -93,23 +93,11 @@
       </aside>
       <div class="content-wrapper">
         <div class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-12">
-                <h1 class="m-0">Inicio</h1>
-              </div>
-              <div class="col-sm-12 text-center p-4">
-                <h3>
-                  Bienvenido <strong>{{ usuario.nombres }}</strong>
-                </h3>
-                <img src="assets/dist/img/home.jpg" />
-              </div>
-            </div>
-          </div>
+          <div class="container-fluid"></div>
         </div>
         <section class="content">
           <div class="container-fluid">
-            <div class="row"></div>
+            <RouterView :usuario="usuario" />
           </div>
         </section>
       </div>
@@ -165,7 +153,7 @@ export default {
             return false;
           }
           localStorage.removeItem("session");
-          this.$router.push("/auth");
+          vm.$router.push("/auth");
         })
         .catch((error) => console.log(error))
         .finally();
