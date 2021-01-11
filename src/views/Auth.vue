@@ -56,9 +56,7 @@
           </form>
           <hr />
           <div class="text-right mt-3 mb-0">
-            <a href="javascript:void(0)" class="text-center"
-              >Crear una cuenta</a
-            >
+            <a href="#/signup" class="text-center">Crear una cuenta</a>
           </div>
         </div>
       </div>
