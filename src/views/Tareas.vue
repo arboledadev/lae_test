@@ -91,7 +91,7 @@
             </ul>
           </div>
           <div v-else>
-            <span class="text-info"> No se encontraron usuarios.</span>
+            <span class="text-info"> No se encontraron tareas.</span>
           </div>
         </div>
       </div>
